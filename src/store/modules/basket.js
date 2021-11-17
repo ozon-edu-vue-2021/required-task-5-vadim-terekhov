@@ -40,7 +40,7 @@ export default {
       if (state.Basket[idx].number > 1){
         state.Basket[idx].number -= 1;
       }
-    }
+    },
   },
   actions:{
     addToBasket({commit},product){
@@ -54,6 +54,6 @@ export default {
     },
     decrementItemInBasket({commit},product){
       commit('decrementItemInBasket',product);
-    }
+    },
   }
 }

@@ -5,6 +5,14 @@
       <img class="wrapper-product-item-img" :src="require('../assets/images/' + this.ProductItem.image )">
     </picture>
     <p class="wrapper-product-item-title">{{ ProductItem.dish }}</p>
+    <p class="wrapper-product-item-number">
+      <label for="">Количество </label>
+      <input type="number" min="1"
+        class="wrapper-product-item-input"
+        v-model="numberProductItem"
+        @change="changeHandler"
+      > 
+    </p>
     <p class="wrapper-product-item-price">{{ ProductItem.price }} $</p>
     <button 
       class="wrapper-product-item-btn"
@@ -20,10 +28,19 @@ export default {
   props: {
     ProductItem: Object,
   },
+  data(){
+    return {
+      numberProductItem: 1,
+    }
+  },
   methods: {
-    ...mapActions(['addToBasket']),
+    ...mapActions(['addToBasket','setNewNumber']),
     handlerClick(){
       this.addToBasket(this.ProductItem);
+      this.numberProductItem = 1;
+    },
+    changeHandler(){
+      this.setNewNumber({item: this.ProductItem,value: this.numberProductItem});
     }
   },
 }
@@ -66,5 +83,15 @@ export default {
 .wrapper-product-item-title{
   max-height: 20px;
   text-align: center;
+}
+.wrapper-product-item-input{
+  width: 50px;
+  border: 0;
+  border-bottom: 2px solid #ccc;
+  text-align: center;
+}
+.wrapper-product-item-input:focus{
+  outline: none;
+  border-bottom: 2px solid green;
 }
 </style>

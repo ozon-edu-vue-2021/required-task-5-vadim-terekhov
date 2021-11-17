@@ -17,7 +17,12 @@ export default {
   mutations:{
     setProduct(state,products){
       state.products = products;
-    }
+    },
+    setNewNumber(state,data){
+      
+      let idx = state.products.findIndex( i => i.id === data.item.id);
+      state.products[idx].number = Number(data.value);
+    },
   },
   actions:{
     async getApiProducts({commit}){
@@ -33,6 +38,10 @@ export default {
       } catch (error) {
         console.error(error);
       }
+    },
+    setNewNumber({commit},data){
+      console.log(data);
+      commit('setNewNumber',data)
     }
   }
 }
