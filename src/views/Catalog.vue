@@ -2,6 +2,11 @@
   <div class="wrapper-catalog">
     <div class="wrapper-catalog-header">
       <h1 class="wrapper-catalog-header-title">Каталог</h1>
+      <div>
+        <router-link :to="{name: 'favorit'}"
+          class="favorit"
+        >Избранное</router-link>
+      </div>
       <div class="wrapper-catalog-header-basket basket">
         <router-link :to="{name: 'basket'}"
           class="basket-link"
@@ -12,13 +17,13 @@
         
       </div>
     </div>
-  <div class="wrapper-catalog-cards">
-    <product-item 
-      v-for="(item,idx) in getProducts"
-      :key="`${idx}+${item.id}`"
-      :ProductItem="item"
-    />
-  </div>
+    <div class="wrapper-catalog-cards">
+      <product-item 
+        v-for="(item,idx) in getProducts"
+        :key="`${idx}+${item.id}`"
+        :ProductItem="item"
+      />
+    </div>
   </div>
 </template>
 
@@ -74,5 +79,19 @@ export default {
   padding: 5px;
   border-radius: 5px;
   margin-left: 7px;
+}
+.favorit{
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: burlywood;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+  transition: all .7s;
+}
+.favorit:hover{
+  cursor: pointer;
+  background-color: green;
+  color: white;
 }
 </style>

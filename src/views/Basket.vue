@@ -12,6 +12,7 @@
       v-if="!getBasket.length"
     >
       в корзине пусто ...
+      <router-link :to="{name: 'catalog'}" class="basket-in-catalog">в каталог</router-link>
     </div>
     <div v-else>
       <div class="wrapper-basket-row header">
@@ -101,5 +102,8 @@ export default {
   font-weight: bold;
   background-color:bisque;
   border: 0;
+}
+.basket-in-catalog{
+  text-decoration: none;
 }
 </style>

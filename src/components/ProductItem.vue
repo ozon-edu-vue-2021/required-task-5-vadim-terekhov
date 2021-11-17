@@ -16,8 +16,15 @@
     <p class="wrapper-product-item-price">{{ ProductItem.price }} $</p>
     <button 
       class="wrapper-product-item-btn"
-      @click="handlerClick"
+      @click="addBasketHandlerClick"
     >Добавить в корзину</button>
+
+    <button 
+      class="wrapper-product-item-btn"
+      :disabled="ProductItem.favorit"
+      @click="addFavoritHandlerClick"
+    >Добавить в избранное</button>
+
   </div>
 </template>
 
@@ -33,11 +40,16 @@ export default {
       numberProductItem: 1,
     }
   },
+  computed:{
+  },
   methods: {
-    ...mapActions(['addToBasket','setNewNumber']),
-    handlerClick(){
+    ...mapActions(['addToBasket','setNewNumber','addToFavorit']),
+    addBasketHandlerClick(){
       this.addToBasket(this.ProductItem);
       this.numberProductItem = 1;
+    },
+    addFavoritHandlerClick(){
+      this.addToFavorit(this.ProductItem);
     },
     changeHandler(){
       this.setNewNumber({item: this.ProductItem,value: this.numberProductItem});
@@ -67,6 +79,7 @@ export default {
   border-radius: 5px;
   color: black;
   transition: all .7s;
+  margin-bottom: 5px;
 }
 .wrapper-product-item-btn:hover{
   cursor: pointer;
@@ -93,5 +106,10 @@ export default {
 .wrapper-product-item-input:focus{
   outline: none;
   border-bottom: 2px solid green;
+}
+.iwrapper-product-item-btn:disabled,
+.wrapper-product-item-btn[disabled]{
+  background-color: #cccccc;
+  color: #666666;
 }
 </style>

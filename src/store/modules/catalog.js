@@ -33,6 +33,7 @@ export default {
           i.number = 1;
           i.price = _.random(100,10000);
           i.image = randomImage();
+          i.favorit = false;
         }
         commit('setProduct',products);
       } catch (error) {
