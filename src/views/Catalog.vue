@@ -14,27 +14,29 @@
           Корзина
           <span class="basket-count"> {{ countBasket }} </span>
         </router-link>
-        
       </div>
     </div>
+    <pagination/>
     <div class="wrapper-catalog-cards">
       <product-item 
-        v-for="(item,idx) in getProducts"
+        v-for="(item,idx) in chunkProducts"
         :key="`${idx}+${item.id}`"
         :ProductItem="item"
       />
     </div>
+    <pagination/>
   </div>
 </template>
 
 <script>
 import ProductItem from '@/components/ProductItem.vue';
+import Pagination from '@/components/Pagination.vue';
 import { mapGetters } from 'vuex';
 export default {
   name: 'Catalog',
-  components: { ProductItem },
+  components: { ProductItem, Pagination },
   computed: {
-    ...mapGetters(['getProducts','countBasket']),
+    ...mapGetters(['chunkProducts','countBasket']),
   },
   
 }
