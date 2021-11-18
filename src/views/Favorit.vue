@@ -9,7 +9,7 @@
             Упс... Вы ничего не выбрали... 
             <router-link :to="{name: 'catalog'}" class="favorit-in-catalog">в каталог</router-link>
         </div>
-        <div v-else>
+        <div v-else class="wrapper-favorit-cards">
             <favorit-item 
                 v-for="item in getFavorit"
                 :key="item.id"
@@ -47,5 +47,10 @@ export default {
 }
 .favorit-in-catalog{
     text-decoration: none;
+}
+.wrapper-favorit-cards{
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
 }
 </style>

@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'ProductItem',
   props: {
@@ -40,16 +40,16 @@ export default {
       numberProductItem: 1,
     }
   },
-  computed:{
-  },
+  computed: mapGetters(['getProducts']),
   methods: {
-    ...mapActions(['addToBasket','setNewNumber','addToFavorit']),
+    ...mapActions(['addToBasket','setNewNumber','addToFavorit','changeFavorit']),
     addBasketHandlerClick(){
       this.addToBasket(this.ProductItem);
       this.numberProductItem = 1;
     },
     addFavoritHandlerClick(){
       this.addToFavorit(this.ProductItem);
+      this.changeFavorit(this.ProductItem);
     },
     changeHandler(){
       this.setNewNumber({item: this.ProductItem,value: this.numberProductItem});

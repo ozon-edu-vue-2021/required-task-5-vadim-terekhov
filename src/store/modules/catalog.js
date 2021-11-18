@@ -19,9 +19,12 @@ export default {
       state.products = products;
     },
     setNewNumber(state,data){
-      
       let idx = state.products.findIndex( i => i.id === data.item.id);
       state.products[idx].number = Number(data.value);
+    },
+    changeFavorit(state,product){
+      let idx = state.products.findIndex( i => i.id === product.id);
+      state.products[idx].favorit = !state.products[idx].favorit;
     },
   },
   actions:{
@@ -43,6 +46,9 @@ export default {
     setNewNumber({commit},data){
       console.log(data);
       commit('setNewNumber',data)
-    }
+    },
+    changeFavorit({commit},product){
+      commit('changeFavorit', product)
+    },
   }
 }
