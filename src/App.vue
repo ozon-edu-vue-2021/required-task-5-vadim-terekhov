@@ -12,7 +12,7 @@ export default {
     ...mapActions(['getApiProducts']),
   },
   created(){
-    this.getApiProducts();
+    this.getApiProducts(1);
   }
 };
 </script>

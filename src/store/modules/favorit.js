@@ -3,7 +3,7 @@ export default {
         favorit: [],
     },
     getters: {
-        getFavorit(state){
+        Favorit(state){
             return state.favorit;
         }
     },
@@ -11,17 +11,17 @@ export default {
         addToFavorit(state,favoritItem){
             state.favorit.push(favoritItem);
         },
-        removeFromFavorit(state,favoritItem){
-            state.favorit = state.favorit.filter( i => i.id !== favoritItem.id);
+        removeFromFavorit(state,favoritItemId){
+            state.favorit = state.favorit.filter( i => i.id !== favoritItemId);
         }
     },
     actions: {
         addToFavorit({commit},favoritItem){
             commit('addToFavorit', favoritItem);
         },
-        removeFromFavorit({commit, dispatch},favoritItem){
-            commit('removeFromFavorit',favoritItem);
-            dispatch('changeFavorit',favoritItem);
+        removeFromFavorit({commit, dispatch},favoritItemId){
+            commit('removeFromFavorit',favoritItemId);
+            dispatch('changeFavorit',favoritItemId);
         },
     }
 }

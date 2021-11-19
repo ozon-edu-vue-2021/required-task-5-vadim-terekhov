@@ -49,10 +49,10 @@ export default {
     },
     addFavoritHandlerClick(){
       this.addToFavorit(this.ProductItem);
-      this.changeFavorit(this.ProductItem);
+      this.changeFavorit(this.ProductItem.id);
     },
     changeHandler(){
-      this.setNewNumber({item: this.ProductItem,value: this.numberProductItem});
+      this.setNewNumber({id: this.ProductItem.id,value: this.numberProductItem});
     }
   },
 }

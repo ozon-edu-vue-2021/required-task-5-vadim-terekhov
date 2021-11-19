@@ -23,7 +23,7 @@ export default {
     methods: {
       ...mapActions(['removeFromFavorit']),
       removeFavorit(){
-        this.removeFromFavorit(this.FavoritItem);
+        this.removeFromFavorit(this.FavoritItem.id);
       },
     }
 }

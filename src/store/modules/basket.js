@@ -6,7 +6,7 @@ export default {
     countBasket(state){
       return state.Basket.length;
     },
-    getBasket(state){
+    Basket(state){
       return state.Basket;
     },
   },
@@ -28,15 +28,15 @@ export default {
         state.Basket.push(product);
       }
     },
-    removeOfBasket(state,product){
-      state.Basket = state.Basket.filter( i => i.id !== product.id);
+    removeOfBasket(state,productId){
+      state.Basket = state.Basket.filter( i => i.id !== productId);
     },
-    incrementItemInBasket(state,product){
-      let idx = state.Basket.findIndex( i => i.id === product.id);
+    incrementItemInBasket(state,productId){
+      let idx = state.Basket.findIndex( i => i.id === productId);
       state.Basket[idx].number += 1;
     },
-    decrementItemInBasket(state,product){
-      let idx = state.Basket.findIndex( i => i.id === product.id);
+    decrementItemInBasket(state,productId){
+      let idx = state.Basket.findIndex( i => i.id === productId);
       if (state.Basket[idx].number > 1){
         state.Basket[idx].number -= 1;
       }
@@ -46,14 +46,14 @@ export default {
     addToBasket({commit},product){
       commit('addToBasket', product);
     },
-    removeOfBasket({commit},product){
-      commit('removeOfBasket', product);
+    removeOfBasket({commit},productId){
+      commit('removeOfBasket', productId);
     },
-    incrementItemInBasket({commit},product){
-      commit('incrementItemInBasket',product);
+    incrementItemInBasket({commit},productId){
+      commit('incrementItemInBasket',productId);
     },
-    decrementItemInBasket({commit},product){
-      commit('decrementItemInBasket',product);
+    decrementItemInBasket({commit},productId){
+      commit('decrementItemInBasket',productId);
     },
   }
 }

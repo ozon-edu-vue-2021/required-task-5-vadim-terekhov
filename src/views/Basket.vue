@@ -3,13 +3,13 @@
     <div class="wrapper-basket-header">
       <h1 class="wrapper-basket-header-title">Корзина</h1>
       <button class="wrapper-basket-header-btn"
-        :disabled="!getBasket.length"
+        :disabled="!Basket.length"
         @click="handlerClick"
       >Оформить</button>
     </div>
     <div
       class="wrapper-basket-empty"
-      v-if="!getBasket.length"
+      v-if="!Basket.length"
     >
       в корзине пусто ...
       <router-link :to="{name: 'catalog'}" class="basket-in-catalog">в каталог</router-link>
@@ -22,7 +22,7 @@
         <p>Убрать</p>
       </div>
       <basket-item
-        v-for="item in getBasket"
+        v-for="item in Basket"
         :key="item.id"
         :BasketItem="item"
       />
@@ -39,9 +39,9 @@ export default {
   name: 'Basket',
   components: { BasketItem },
   computed: {
-    ...mapGetters(['getBasket']),
+    ...mapGetters(['Basket']),
     total(){
-      return this.getBasket.reduce( (prev,cur) => {
+      return this.Basket.reduce( (prev,cur) => {
         return prev + (cur.number * cur.price);
       },0);
 
@@ -49,7 +49,7 @@ export default {
   },
   methods:{
     handlerClick(){
-      const result = this.getBasket.map( i => i.dish);
+      const result = this.Basket.map( i => i.dish);
       alert(JSON.stringify(result));
     }
   }

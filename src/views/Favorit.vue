@@ -4,14 +4,14 @@
             <h1 class="wrapper-favorit-header-title">Избранное</h1>
         </div>
         <div
-            v-if="!getFavorit.length"
+            v-if="!Favorit.length"
         >
             Упс... Вы ничего не выбрали... 
             <router-link :to="{name: 'catalog'}" class="favorit-in-catalog">в каталог</router-link>
         </div>
         <div v-else class="wrapper-favorit-cards">
             <favorit-item 
-                v-for="item in getFavorit"
+                v-for="item in Favorit"
                 :key="item.id"
                 :FavoritItem="item"
             />
@@ -25,7 +25,7 @@ import { mapGetters } from 'vuex';
 export default {
     name: 'Favorit',
     components: { FavoritItem },
-    computed: mapGetters(['getFavorit']),
+    computed: mapGetters(['Favorit']),
 }
 </script>
 

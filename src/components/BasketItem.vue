@@ -36,13 +36,13 @@ export default {
   methods: {
     ...mapActions(['removeOfBasket','incrementItemInBasket','decrementItemInBasket']),
     clickHandler(){
-      this.removeOfBasket(this.BasketItem);
+      this.removeOfBasket(this.BasketItem.id);
     },
     handlerIncrement(){
-      this.incrementItemInBasket(this.BasketItem);
+      this.incrementItemInBasket(this.BasketItem.id);
     },
     handlerDecrement(){
-      this.decrementItemInBasket(this.BasketItem);
+      this.decrementItemInBasket(this.BasketItem.id);
     }
   }
 }

@@ -3,7 +3,7 @@
     <div class="pagination-page"
       v-for="page in pages"
       :key="page"
-      :class="{'selected': page === getPage}"
+      :class="{'selected': page === Page}"
       @click="paginationClick(page)"
     >
       {{page}}
@@ -16,7 +16,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'Pagination',
   computed: {
-    ...mapGetters(['pages','getPage']),
+    ...mapGetters(['pages','Page']),
   },
   methods: {
     ...mapActions(['setPage']),
