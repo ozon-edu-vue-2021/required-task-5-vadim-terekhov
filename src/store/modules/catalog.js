@@ -78,10 +78,8 @@ export default {
     changeFavorit({commit},productId){
       commit('changeFavorit', productId)
     },
-    setPage({commit, dispatch},page){
+    setPage({dispatch},page){
       dispatch('getApiProducts',page);
-      //commit('setPage',page);
-      console.log(commit);
     },
   }
 }
